@@ -16,8 +16,6 @@
 7. [Demo Section Spec](#7-demo-section-spec)
 8. [Ethical Framework](#8-ethical-framework)
 9. [MVP Success Criteria](#9-mvp-success-criteria)
-10. [Pitch Deck Script](#10-pitch-deck-script)
-11. [Roadmap](#11-roadmap)
 
 ---
 
@@ -307,83 +305,6 @@ Reframe: "I can't know what others think without actually asking them."
 | User completes analysis without errors | > 90% success rate | **P1** |
 | Mobile responsiveness | Works on iOS Safari & Android Chrome | **P1** |
 | At least 3 cognitive traps detected in testing | Pass | **P1** |
-
----
-
-## 10. Pitch Deck Script
-
-*7 slides. Each includes the headline, spoken script, and visual direction.*
-
----
-
-### Slide 1 — Hook
-
-> *"People don't just have problems — they have distorted ways of thinking about those problems."*
-
-**Visual:** Full-screen dark background, single sentence centered. No logo yet. Let it breathe.
-
----
-
-### Slide 2 — Problem
-
-> *"We all make cognitive mistakes — overgeneralizing, catastrophizing, assuming the worst.*
-> *And the biggest issue? We think those thoughts are true."*
-
-**Visual:** Show 3 example distorted thoughts floating on screen. No labels. Let the audience recognize themselves.
-
----
-
-### Slide 3 — Solution
-
-> *"Overthinker.ai acts like a mirror for your mind.*
-> *It doesn't judge — it helps you see your thoughts clearly."*
-
-**Visual:** Introduce the logo. Animate the word *"mirror"* — show a thought going in, a reframe coming out.
-
----
-
-### Slide 4 — How It Works
-
-> *"You write a thought → AI detects patterns → explains them → and offers a balanced alternative."*
-
-**Visual:** 3-step horizontal flow diagram. Minimalist. Each step in a circle connected by arrows.
-
----
-
-### Slide 5 — Why It's Different
-
-> *"Most apps track behavior.*
-> *We analyze thinking itself."*
-
-**Visual:** Side-by-side comparison. Left: competitors track symptoms. Right: Overthinker.ai addresses the root cognitive pattern.
-
----
-
-### Slide 6 — Impact
-
-> *"Better thinking → better decisions → better lives."*
-
-**Visual:** Stat on screen — *"1 in 3 adults experience anxiety driven by distorted thinking."* (Source: APA). Then fade to the 3-step impact chain.
-
----
-
-### Slide 7 — Close
-
-> *"We call it Overthinker.ai — because that's where it starts.*
-> *But what we really improve… is how people think."*
-
-**Visual:** Full-screen logo. Tagline below: *"Think clearer, not harder."* Contact / QR code. Silence. Let it land.
-
----
-
-## 11. Roadmap
-
-| Phase | Timeline | Deliverables |
-|-------|----------|-------------|
-| **v0 — Prototype** | Week 1–2 | Landing page, hardcoded demo, no real API. HTML/CSS/JS or Next.js skeleton. |
-| **v1 — MVP** | Week 3–4 | Live OpenAI integration, real analysis, mobile responsive, deployed to Vercel. |
-| **v2 — Growth** | Month 2 | User accounts (Supabase), thought history, share-a-reframe feature. |
-| **v3 — Monetize** | Month 3+ | Pro tier: unlimited history, team mode for coaches, API for third-party integrations. |
 
 ---
 
