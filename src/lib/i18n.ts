@@ -50,6 +50,26 @@ export const translations = {
     onboarding1: "Merhaba. Burası senin güvenli alanın.",
     onboarding2: "Zihnini kurcalayan bir düşünceyi buraya yaz.",
     onboarding3: "İpucu: Ne kadar spesifik olursan, o kadar derin analiz alırsın.",
+    loadingMessages: [
+      "Satır aralarını okuyorum…",
+      "Örüntüler aranıyor…",
+      "Neredeyse bitti…",
+      "Yeniden çerçeveleme kontrol ediliyor…"
+    ],
+    tryAnother: "Başka bir düşünce dene",
+    seeSimilar: "Benzer örneklere göz at",
+    learnAbout: "{trap} Hakkında",
+    trapDescriptions: {
+      "All-or-Nothing Thinking": "Olayları sadece iki uçta (mükemmel vs. başarısız) değerlendirme, gri alanları görememe durumudur. Siyah-beyaz düşünce olarak da bilinir.",
+      "Catastrophizing": "Küçük veya olası bir sorunun en kötü senaryoya evrileceğine inanma ve durumu zihinde abartma eğilimidir.",
+      "Overgeneralization": "Tek bir olumsuz olayı, bitmek bilmeyen ve hayatın her alanına yayılan bir yenilgi döngüsünün kanıtı olarak görme yanılgısıdır.",
+      "Mind Reading": "Elinizde yeterli kanıt olmamasına rağmen başkalarının ne düşündüğünü, niyetlerini veya sizin hakkınızdaki yargılarını bildiğinizi varsayma tuzağıdır.",
+      "Fortune Telling": "Gelecekte olayların kötü gideceğini kesin bir gerçekmiş gibi tahmin etme, olumlu ihtimalleri göz ardı etme durumudur.",
+      "Personalization": "Sizinle tamamen veya kısmen ilgisi olmayan olumsuz olaylar, sonuçlar veya başkalarının davranışları için kendinizi haksız yere suçlama eğilimidir.",
+      "Should Statements": "Kendisinin veya başkalarının nasıl davranması gerektiğine dair katı, esnemez kurallara sahip olma; bu kurallar yıkıldığında suçluluk veya öfke hissetme durumudur.",
+      "Emotional Reasoning": "Mantıksal kanıtlar yerine anlık duyguların gerçeği yansıttığına inanma: 'Böyle hissediyorum, o halde gerçek bu olmalı' yanılgısıdır.",
+      "Labeling": "Kendinizi veya başkalarını tek bir hatayı merkeze alarak (örn: 'Ben bir aptalım') kalıcı, genelleştirici ve olumsuz sıfatlarla tanımlama alışkanlığıdır."
+    }
   },
   en: {
     subtitle: "Think clearer, not harder.",
@@ -100,6 +120,26 @@ export const translations = {
     onboarding1: "Hi. This is a safe space.",
     onboarding2: "Write down a thought that's on your mind.",
     onboarding3: "Tip: The more specific you are, the better the insight.",
+    loadingMessages: [
+      "Reading between the lines…",
+      "Looking for patterns…",
+      "Almost there…",
+      "Checking the reframe…"
+    ],
+    tryAnother: "Try another thought",
+    seeSimilar: "See similar examples",
+    learnAbout: "Learn about {trap}",
+    trapDescriptions: {
+      "All-or-Nothing Thinking": "Evaluating things in only two extremes (perfect vs. failure), failing to see the gray areas in complex situations.",
+      "Catastrophizing": "Believing that a small or possible problem will inevitably turn into the absolute worst-case scenario.",
+      "Overgeneralization": "Seeing a single negative event as a never-ending pattern of defeat that applies to all areas of life.",
+      "Mind Reading": "Assuming you know what other people are thinking or their negative intentions without sufficient evidence.",
+      "Fortune Telling": "Predicting that things will turn out badly in the future as an established fact, ignoring positive possibilities.",
+      "Personalization": "Blaming yourself unfairly for negative events, outcomes, or other people's behavior that have nothing to do with you.",
+      "Should Statements": "Having rigid, inflexible rules about how you or others 'should' or 'must' behave, leading to guilt or anger when broken.",
+      "Emotional Reasoning": "Believing that your momentary emotional state reflects objective reality: 'I feel it, therefore it must be true.'",
+      "Labeling": "The tendency to define yourself or others with a permanent, negative and generalized label based on a single behavior or mistake."
+    }
   },
 };
 

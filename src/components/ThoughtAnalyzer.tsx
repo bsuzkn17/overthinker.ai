@@ -22,9 +22,31 @@ export default function ThoughtAnalyzer({ locale }: ThoughtAnalyzerProps) {
   const [thought, setThought] = useState("");
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [loading, setLoading] = useState(false);
+  const [loadingMsgIdx, setLoadingMsgIdx] = useState(0);
   const [error, setError] = useState("");
   const [demoIndex, setDemoIndex] = useState(0);
+  const [showLearnMore, setShowLearnMore] = useState(false);
+  const [showSimilar, setShowSimilar] = useState(false);
   const resultRef = useRef<HTMLDivElement>(null);
+
+  const t = translations[locale];
+  const demos = demoExamples[locale];
+  const charCount = thought.length;
+  const isValid = charCount >= 10 && charCount <= 800;
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (loading) {
+      setLoadingMsgIdx(0);
+      interval = setInterval(() => {
+        setLoadingMsgIdx((prev) => {
+          const matchArr = (t as any).loadingMessages;
+          return (prev + 1) % (matchArr?.length || 1);
+        });
+      }, 800);
+    }
+    return () => clearInterval(interval);
+  }, [loading, t]);
 
   useEffect(() => {
     if (result && resultRef.current) {
@@ -32,10 +54,11 @@ export default function ThoughtAnalyzer({ locale }: ThoughtAnalyzerProps) {
     }
   }, [result]);
 
-  const t = translations[locale];
-  const demos = demoExamples[locale];
-  const charCount = thought.length;
-  const isValid = charCount >= 10 && charCount <= 800;
+  useEffect(() => {
+    if (result && resultRef.current) {
+      resultRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [result]);
 
   const handleAnalyze = async () => {
     if (!isValid) return;
@@ -105,6 +128,9 @@ export default function ThoughtAnalyzer({ locale }: ThoughtAnalyzerProps) {
     setThought("");
     setResult(null);
     setError("");
+    setShowLearnMore(false);
+    setShowSimilar(false);
+    setTimeout(() => document.getElementById("thought-input")?.focus(), 50);
   };
 
   return (
@@ -167,7 +193,7 @@ export default function ThoughtAnalyzer({ locale }: ThoughtAnalyzerProps) {
           {loading ? (
             <>
               <span className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-              {t.analyzingButton}
+              {((t as any).loadingMessages)?.[loadingMsgIdx] || t.analyzingButton}
             </>
           ) : (
             t.analyzeButton
@@ -219,18 +245,84 @@ export default function ThoughtAnalyzer({ locale }: ThoughtAnalyzerProps) {
               confidenceHigh: t.confidenceHigh,
               confidenceMedium: t.confidenceMedium,
               confidenceLow: t.confidenceLow,
+              shareReframe: (t as any).shareReframe || "Share",
+              copySuccess: (t as any).copySuccess || "Copied!",
+              downloadSquare: (t as any).downloadSquare || "Square",
+              downloadStory: (t as any).downloadStory || "Story",
             }}
             confidence={result.confidence}
           />
-          <button
-            id="reset-button"
-            onClick={handleReset}
-            className="py-3 px-6 rounded-xl text-sm font-medium
-                       text-muted hover:text-text border border-white/10
-                       hover:bg-white/5 transition-all duration-200"
-          >
-            🔄 {t.resetButton}
-          </button>
+          
+          {/* Post-Analysis Retention Actions */}
+          <div className="w-full flex flex-col gap-3 mt-2">
+            <div className="flex flex-col sm:flex-row gap-3">
+              <button
+                onClick={handleReset}
+                className="flex-[2] py-3.5 px-6 rounded-2xl font-semibold text-sm
+                           bg-surface border border-white/10 text-text
+                           hover:bg-white/5 hover:border-white/20 transition-all duration-200"
+              >
+                ✏️ {(t as any).tryAnother}
+              </button>
+              
+              {result.trapName && (
+                <>
+                  <button
+                    onClick={() => {
+                        setShowSimilar(!showSimilar);
+                        setShowLearnMore(false);
+                    }}
+                    className={`flex-1 py-3.5 px-6 rounded-2xl font-medium text-sm transition-all duration-200
+                               ${showSimilar ? "bg-white/10 border-white/30 text-text" : "bg-surface border-white/10 text-muted hover:text-text hover:bg-white/5"}`}
+                  >
+                    🔍 {(t as any).seeSimilar}
+                  </button>
+                  <button
+                    onClick={() => {
+                        setShowLearnMore(!showLearnMore);
+                        setShowSimilar(false);
+                    }}
+                    className={`flex-1 py-3.5 px-6 rounded-2xl font-medium text-sm transition-all duration-200
+                               ${showLearnMore ? "bg-white/10 border-white/30 text-text" : "bg-surface border-white/10 text-muted hover:text-text hover:bg-white/5"}`}
+                  >
+                    📖 {(t as any).learnAbout.replace("{trap}", result.trapName)}
+                  </button>
+                </>
+              )}
+            </div>
+
+            {/* Expanded Views */}
+            {showLearnMore && result.trapName && (
+              <div className="p-6 rounded-2xl bg-surface border border-primary/20 animate-fade-in-up text-left mt-2">
+                <h4 className="font-heading font-bold text-lg mb-2 text-primary">{result.trapName}</h4>
+                <p className="text-muted text-sm leading-relaxed">
+                  {((t as any).trapDescriptions)[result.trapName] || "This is a common cognitive distortion that can negatively affect your emotional well-being."}
+                </p>
+              </div>
+            )}
+            
+            {showSimilar && result.trapName && (
+              <div className="p-6 rounded-2xl bg-surface border border-white/10 animate-fade-in-up text-left flex flex-col gap-4 mt-2">
+                <h4 className="font-heading font-bold text-lg text-primary mb-1">
+                  {locale === 'tr' ? 'Benzer Örnekler' : 'Similar Examples'}: {result.trapName}
+                </h4>
+                {demos.filter(d => d.trapName === result.trapName).slice(0, 2).map((demo, idx) => (
+                    <div key={idx} className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                        <p className="italic text-text/80 text-sm mb-3">&#34;{demo.input}&#34;</p>
+                        <div className="flex gap-2 items-start text-success/80">
+                            <span className="text-xs mt-0.5">🔄</span>
+                            <p className="text-sm font-medium">{demo.reframe}</p>
+                        </div>
+                    </div>
+                ))}
+                {demos.filter(d => d.trapName === result.trapName).length === 0 && (
+                    <p className="text-muted text-sm italic">
+                      {locale === 'tr' ? 'Hiç benzer örnek bulunamadı.' : 'No similar examples found.'}
+                    </p>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       )}
     </div>
