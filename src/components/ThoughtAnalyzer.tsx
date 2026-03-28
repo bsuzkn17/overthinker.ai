@@ -148,10 +148,10 @@ export default function ThoughtAnalyzer({ locale }: ThoughtAnalyzerProps) {
           }}
           placeholder={t.placeholder}
           rows={4}
-          className={`w-full p-6 bg-surface rounded-2xl border transition-all duration-300
-                     text-text placeholder:text-muted/50 resize-none outline-none
-                     text-[16px] leading-relaxed
-                     ${loading ? 'border-primary/30 opacity-70 cursor-not-allowed' : 'border-white/10 focus:border-primary/50 focus:ring-2 focus:ring-primary/20 focus:shadow-lg focus:shadow-primary/5'}
+          className={`w-full p-6 md:p-8 bg-surface/50 backdrop-blur-md rounded-3xl border transition-all duration-300
+                     text-text placeholder:text-muted/40 resize-none outline-none
+                     text-lg md:text-xl leading-relaxed
+                     ${loading ? 'border-primary/30 opacity-70 cursor-not-allowed' : 'border-white/10 focus:border-primary focus:ring-4 focus:ring-primary/20 focus:shadow-[0_0_30px_rgba(167,139,250,0.3)]'}
                      `}
         />
         <div className="absolute bottom-4 right-5 flex items-center gap-2">

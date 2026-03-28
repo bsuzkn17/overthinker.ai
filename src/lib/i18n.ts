@@ -69,7 +69,16 @@ export const translations = {
       "Should Statements": "Kendisinin veya başkalarının nasıl davranması gerektiğine dair katı, esnemez kurallara sahip olma; bu kurallar yıkıldığında suçluluk veya öfke hissetme durumudur.",
       "Emotional Reasoning": "Mantıksal kanıtlar yerine anlık duyguların gerçeği yansıttığına inanma: 'Böyle hissediyorum, o halde gerçek bu olmalı' yanılgısıdır.",
       "Labeling": "Kendinizi veya başkalarını tek bir hatayı merkeze alarak (örn: 'Ben bir aptalım') kalıcı, genelleştirici ve olumsuz sıfatlarla tanımlama alışkanlığıdır."
-    }
+    },
+    heroTitle: "Kafan mı karıştı? Düşünceni yaz, netleştir.",
+    howItWorksStep1: "Yaz",
+    howItWorksStep1Desc: "Seni rahatsız eden düşünceyi sansürsüzce paylaş.",
+    howItWorksStep2: "Analiz Et",
+    howItWorksStep2Desc: "Yapay zeka, düşünce tuzaklarını ve bilişsel çarpıtmaları bulsun.",
+    howItWorksStep3: "Netleş",
+    howItWorksStep3Desc: "Gerçeği daha net gör ve zihnini özgürleştir.",
+    exampleBeforeCard: "Ben başarısızım",
+    exampleAfterCard: "Bu deneyim istediğim gibi gitmedi ama bu benim genel başarımı tanımlamaz."
   },
   en: {
     subtitle: "Think clearer, not harder.",
@@ -139,7 +148,16 @@ export const translations = {
       "Should Statements": "Having rigid, inflexible rules about how you or others 'should' or 'must' behave, leading to guilt or anger when broken.",
       "Emotional Reasoning": "Believing that your momentary emotional state reflects objective reality: 'I feel it, therefore it must be true.'",
       "Labeling": "The tendency to define yourself or others with a permanent, negative and generalized label based on a single behavior or mistake."
-    }
+    },
+    heroTitle: "Confused? Write your thought, find clarity.",
+    howItWorksStep1: "Write",
+    howItWorksStep1Desc: "Share the thought that's bothering you without filtering.",
+    howItWorksStep2: "Analyze",
+    howItWorksStep2Desc: "AI detects thinking traps and cognitive distortions.",
+    howItWorksStep3: "Clarify",
+    howItWorksStep3Desc: "See the reality more clearly and free your mind.",
+    exampleBeforeCard: "I am a failure",
+    exampleAfterCard: "This experience didn't go as I wanted, but it doesn't define my overall success."
   },
 };
 

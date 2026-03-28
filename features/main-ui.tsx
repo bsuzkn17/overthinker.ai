@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import ResultCard from "./ResultCard";
+import ResultCard from "@/components/ResultCard";
 import { translations, demoExamples, type Locale } from "@/lib/i18n";
 
 interface AnalysisResult {
@@ -187,7 +187,7 @@ export default function ThoughtAnalyzer({ locale }: ThoughtAnalyzerProps) {
               insight: t.insight,
               reframe: t.reframe,
               suggestions: t.suggestions,
-            }}
+            } as any}
           />
           <button
             id="reset-button"
