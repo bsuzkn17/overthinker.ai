@@ -1,6 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { Share2, Copy, Download, Check, X } from "lucide-react";
+import { toPng } from "html-to-image";
+import SharingCard from "./SharingCard";
+
+const InstagramIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+  </svg>
+);
 
 interface ResultCardProps {
   trapName: string | null;
@@ -19,6 +30,10 @@ interface ResultCardProps {
     confidenceHigh: string;
     confidenceMedium: string;
     confidenceLow: string;
+    shareReframe: string;
+    copySuccess: string;
+    downloadSquare: string;
+    downloadStory: string;
   };
   confidence?: "high" | "medium" | "low";
 }
@@ -34,10 +49,13 @@ export default function ResultCard({
   confidence,
 }: ResultCardProps) {
   const [feedback, setFeedback] = useState<"up" | "down" | null>(null);
+  const [copying, setCopying] = useState(false);
+  const [showShareOptions, setShowShareOptions] = useState(false);
+  const squareRef = useRef<HTMLDivElement>(null);
+  const storyRef = useRef<HTMLDivElement>(null);
 
   const handleFeedback = (type: "up" | "down") => {
     setFeedback(type);
-    // Save to local storage for future optimization
     const existingFeedback = JSON.parse(localStorage.getItem("overthinker_feedback") || "[]");
     existingFeedback.push({
       timestamp: new Date().toISOString(),
@@ -48,6 +66,33 @@ export default function ResultCard({
     });
     localStorage.setItem("overthinker_feedback", JSON.stringify(existingFeedback));
   };
+
+  const copyToClipboard = () => {
+    const text = `🧠 I caught myself ${trapName} today.\n🔄 New perspective: "${reframe}"\n— Overthinker.ai`;
+    navigator.clipboard.writeText(text);
+    setCopying(true);
+    setTimeout(() => setCopying(false), 2000);
+  };
+
+  const downloadImage = async (variant: "square" | "story") => {
+    const ref = variant === "square" ? squareRef : storyRef;
+    if (ref.current) {
+      try {
+        const dataUrl = await toPng(ref.current, { 
+          quality: 1, 
+          pixelRatio: 2,
+          cacheBust: true,
+        });
+        const link = document.createElement("a");
+        link.download = `overthinker-${variant}-${Date.now()}.png`;
+        link.href = dataUrl;
+        link.click();
+      } catch (err) {
+        console.error("Image generation failed:", err);
+      }
+    }
+  };
+
   if (crisisDetected) {
     return (
       <div className="w-full rounded-3xl overflow-hidden border border-red-500/30 bg-red-500/5 shadow-2xl shadow-red-500/10 animate-in fade-in slide-in-from-bottom-6 duration-700 animate-glow-emergency">
@@ -87,27 +132,75 @@ export default function ResultCard({
 
   return (
     <div className="w-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-primary/5">
+      {/* Hidden Cards for Image Generation */}
+      <SharingCard ref={squareRef} trapName={trapName} reframe={reframe || ""} variant="square" />
+      <SharingCard ref={storyRef} trapName={trapName} reframe={reframe || ""} variant="story" />
+
       {/* Trap Badge & Confidence */}
-      <div className="px-8 pt-8 pb-4 flex flex-wrap items-center gap-3 animate-slide-in-left">
-        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/15 border border-primary/30 text-primary text-sm font-semibold tracking-wide">
-          🧠 {labels.detected}: {trapName}
-        </span>
-        
-        {confidence && (
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-[11px] font-medium tracking-wide">
-            <span className={`w-2 h-2 rounded-full animate-pulse ${
-              confidence === 'high' ? 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]' : 
-              confidence === 'medium' ? 'bg-yellow-400 shadow-[0_0_8px_rgba(250,204,21,0.4)]' : 
-              'bg-muted/40'
-            }`} />
-            <span className="text-text/60 uppercase">
-              {confidence === 'high' ? labels.confidenceHigh : 
-               confidence === 'medium' ? labels.confidenceMedium : 
-               labels.confidenceLow}
-            </span>
-          </div>
-        )}
+      <div className="px-8 pt-8 pb-4 flex flex-wrap items-center justify-between gap-4 animate-slide-in-left">
+        <div className="flex flex-wrap items-center gap-3">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/15 border border-primary/30 text-primary text-sm font-semibold tracking-wide">
+            🧠 {labels.detected}: {trapName}
+          </span>
+          
+          {confidence && (
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-[11px] font-medium tracking-wide">
+              <span className={`w-2 h-2 rounded-full animate-pulse ${
+                confidence === 'high' ? 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]' : 
+                confidence === 'medium' ? 'bg-yellow-400 shadow-[0_0_8px_rgba(250,204,21,0.4)]' : 
+                'bg-muted/40'
+              }`} />
+              <span className="text-text/60 uppercase">
+                {confidence === 'high' ? labels.confidenceHigh : 
+                 confidence === 'medium' ? labels.confidenceMedium : 
+                 labels.confidenceLow}
+              </span>
+            </div>
+          )}
+        </div>
+
+        {/* Share Action */}
+        <button
+          onClick={() => setShowShareOptions(!showShareOptions)}
+          className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold tracking-wide transition-all duration-300
+            ${showShareOptions 
+              ? "bg-primary text-white shadow-lg shadow-primary/30" 
+              : "bg-white/5 text-muted hover:bg-white/10 hover:text-text border border-white/5"}
+          `}
+        >
+          <Share2 className="w-4 h-4" />
+          {labels.shareReframe}
+        </button>
       </div>
+
+      {/* Share Options Panel */}
+      {showShareOptions && (
+        <div className="px-8 pb-6 animate-in fade-in slide-in-from-top-2 duration-300">
+          <div className="p-4 rounded-2xl bg-primary/5 border border-primary/10 grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <button
+              onClick={copyToClipboard}
+              className="flex items-center justify-center gap-2 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 transition-all transition-colors"
+            >
+              {copying ? <Check className="w-4 h-4 text-success" /> : <Copy className="w-4 h-4" />}
+              <span className="text-sm font-medium">{copying ? labels.copySuccess : "Copy Text"}</span>
+            </button>
+            <button
+              onClick={() => downloadImage("square")}
+              className="flex items-center justify-center gap-2 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 transition-all transition-colors"
+            >
+              <X className="w-4 h-4 text-primary" />
+              <span className="text-sm font-medium">{labels.downloadSquare}</span>
+            </button>
+            <button
+              onClick={() => downloadImage("story")}
+              className="flex items-center justify-center gap-2 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 transition-all transition-colors"
+            >
+              <InstagramIcon />
+              <span className="text-sm font-medium">{labels.downloadStory}</span>
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Insight Block */}
       <div className="px-8 pb-4 animate-fade-in-up delay-100">

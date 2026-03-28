@@ -56,7 +56,7 @@ export default function ThoughtAnalyzer({ locale }: ThoughtAnalyzerProps) {
       }
 
       const data = await res.json();
-      setResult({
+      const newResult = {
         trapName: data.trap_name,
         insight: data.insight,
         reframe: data.reframe,
@@ -64,7 +64,23 @@ export default function ThoughtAnalyzer({ locale }: ThoughtAnalyzerProps) {
         message: data.message,
         crisisDetected: data.crisis_detected,
         confidence: data.confidence,
-      });
+      };
+      
+      setResult(newResult);
+
+      // Save to History (if it's a valid trap analysis)
+      if (data.trap_name) {
+        const history = JSON.parse(localStorage.getItem('ot_history') || '[]');
+        const historyEntry = {
+          id: Date.now(),
+          thought,
+          trap: data.trap_name,
+          reframe: data.reframe,
+          date: new Date().toISOString()
+        };
+        const updatedHistory = [historyEntry, ...history].slice(0, 20);
+        localStorage.setItem('ot_history', JSON.stringify(updatedHistory));
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : t.genericError);
     } finally {
