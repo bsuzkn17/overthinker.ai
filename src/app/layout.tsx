@@ -14,9 +14,23 @@ const poppins = Poppins({
   weight: "700",
 });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Overthinker.ai",
-  description: "Think clearer, not harder. Bilişsel çarpıtmaları fark et ve dengeli düşünmeye başla.",
+  description: "Düşüncelerini netleştir, bilişsel çarpıtmalarını fark et.",
+  manifest: "/manifest.json", // Manifest dosyasını bağlar
+  themeColor: "#a78bfa",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Overthinker",
+  },
+  icons: {
+    apple: "/icon-192.png", // iOS için ikon
+  },
+};
+
+export const viewport = {
+  themeColor: "#a78bfa",
 };
 
 export default function RootLayout({
