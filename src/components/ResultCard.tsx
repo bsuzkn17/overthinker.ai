@@ -26,6 +26,7 @@ interface ResultCardProps {
     downloadStory: string;
   };
   confidence?: "high" | "medium" | "low";
+  thought?: string;
 }
 
 export default function ResultCard({
@@ -37,6 +38,7 @@ export default function ResultCard({
   crisisDetected,
   labels,
   confidence,
+  thought,
 }: ResultCardProps) {
   const [feedback, setFeedback] = useState<"up" | "down" | null>(null);
   const [copying, setCopying] = useState(false);
@@ -66,33 +68,26 @@ export default function ResultCard({
     setDownloading(true);
 
     try {
-      // URL parametrelerini güvenli şekilde encode et
       const params = new URLSearchParams({
         reframe: reframe.slice(0, 300),
         trap: trapName || "",
+        thought: (thought || "").slice(0, 120),
       });
       const imageUrl = `/api/og?${params.toString()}`;
 
-      // Görseli fetch et
       const res = await fetch(imageUrl);
       if (!res.ok) throw new Error("Gorsel alinamadi");
       const blob = await res.blob();
       const file = new File([blob], "overthinker-analiz.png", { type: "image/png" });
 
-      // Mobilde Web Share API varsa doğrudan paylaş
       const canShare =
         typeof navigator.share === "function" &&
         typeof navigator.canShare === "function" &&
         navigator.canShare({ files: [file] });
 
       if (canShare) {
-        await navigator.share({
-          files: [file],
-          title: "Overthinker.ai",
-          text: reframe,
-        });
+        await navigator.share({ files: [file], title: "Overthinker.ai", text: reframe });
       } else {
-        // Masaüstünde direkt indir
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.href = url;
@@ -101,13 +96,8 @@ export default function ResultCard({
         URL.revokeObjectURL(url);
       }
     } catch (err) {
-      console.error("Paylasim/indirme hatasi:", err);
-      // Fallback: sayfayı aç
-      const params = new URLSearchParams({
-        reframe: (reframe || "").slice(0, 300),
-        trap: trapName || "",
-      });
-      window.open(`/api/og?${params.toString()}`, "_blank");
+      console.error(err);
+      window.open(`/api/og?reframe=${encodeURIComponent(reframe)}&trap=${encodeURIComponent(trapName || "")}`, "_blank");
     } finally {
       setDownloading(false);
     }
@@ -161,10 +151,10 @@ export default function ResultCard({
           <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-[11px] font-medium tracking-wide">
             <span
               className={`w-2 h-2 rounded-full animate-pulse ${confidence === "high"
-                  ? "bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]"
-                  : confidence === "medium"
-                    ? "bg-yellow-400 shadow-[0_0_8px_rgba(250,204,21,0.4)]"
-                    : "bg-muted/40"
+                ? "bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]"
+                : confidence === "medium"
+                  ? "bg-yellow-400 shadow-[0_0_8px_rgba(250,204,21,0.4)]"
+                  : "bg-muted/40"
                 }`}
             />
             <span className="text-text/60 uppercase">
