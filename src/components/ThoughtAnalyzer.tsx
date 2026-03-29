@@ -88,7 +88,7 @@ export default function ThoughtAnalyzer({ locale }: ThoughtAnalyzerProps) {
         crisisDetected: data.crisis_detected,
         confidence: data.confidence,
       };
-      
+
       setResult(newResult);
 
       // Save to History (if it's a valid trap analysis)
@@ -156,13 +156,12 @@ export default function ThoughtAnalyzer({ locale }: ThoughtAnalyzerProps) {
         />
         <div className="absolute bottom-4 right-5 flex items-center gap-2">
           <span
-            className={`text-xs font-mono transition-colors duration-300 ${
-              charCount < 600
-                ? "text-muted/40"
-                : charCount < 750
-                  ? "text-yellow-400 font-bold"
-                  : "text-red-400 font-bold"
-            }`}
+            className={`text-xs font-mono transition-colors duration-300 ${charCount < 600
+              ? "text-muted/40"
+              : charCount < 750
+                ? "text-yellow-400 font-bold"
+                : "text-red-400 font-bold"
+              }`}
           >
             {charCount}/800
           </span>
@@ -229,6 +228,7 @@ export default function ThoughtAnalyzer({ locale }: ThoughtAnalyzerProps) {
       {result && (
         <div ref={resultRef} className="w-full mt-4 flex flex-col items-center gap-4 scroll-mt-20">
           <ResultCard
+            thought={thought}
             trapName={result.trapName}
             insight={result.insight}
             reframe={result.reframe}
@@ -252,25 +252,28 @@ export default function ThoughtAnalyzer({ locale }: ThoughtAnalyzerProps) {
             }}
             confidence={result.confidence}
           />
-          
+
           {/* Post-Analysis Retention Actions */}
           <div className="w-full flex flex-col gap-3 mt-2">
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex flex-col gap-3">
               <button
                 onClick={handleReset}
-                className="flex-[2] py-3.5 px-6 rounded-2xl font-semibold text-sm
-                           bg-surface border border-white/10 text-text
-                           hover:bg-white/5 hover:border-white/20 transition-all duration-200"
+                className="w-full py-5 px-8 rounded-2xl font-bold text-lg
+             bg-gradient-to-r from-primary to-secondary
+             text-white shadow-lg shadow-primary/30
+             hover:brightness-110 hover:shadow-xl hover:shadow-primary/40
+             active:scale-[0.98] transition-all duration-200
+             flex items-center justify-center gap-3"
               >
                 ✏️ {(t as any).tryAnother}
               </button>
-              
+
               {result.trapName && (
                 <>
                   <button
                     onClick={() => {
-                        setShowSimilar(!showSimilar);
-                        setShowLearnMore(false);
+                      setShowSimilar(!showSimilar);
+                      setShowLearnMore(false);
                     }}
                     className={`flex-1 py-3.5 px-6 rounded-2xl font-medium text-sm transition-all duration-200
                                ${showSimilar ? "bg-white/10 border-white/30 text-text" : "bg-surface border-white/10 text-muted hover:text-text hover:bg-white/5"}`}
@@ -279,8 +282,8 @@ export default function ThoughtAnalyzer({ locale }: ThoughtAnalyzerProps) {
                   </button>
                   <button
                     onClick={() => {
-                        setShowLearnMore(!showLearnMore);
-                        setShowSimilar(false);
+                      setShowLearnMore(!showLearnMore);
+                      setShowSimilar(false);
                     }}
                     className={`flex-1 py-3.5 px-6 rounded-2xl font-medium text-sm transition-all duration-200
                                ${showLearnMore ? "bg-white/10 border-white/30 text-text" : "bg-surface border-white/10 text-muted hover:text-text hover:bg-white/5"}`}
@@ -300,25 +303,25 @@ export default function ThoughtAnalyzer({ locale }: ThoughtAnalyzerProps) {
                 </p>
               </div>
             )}
-            
+
             {showSimilar && result.trapName && (
               <div className="p-6 rounded-2xl bg-surface border border-white/10 animate-fade-in-up text-left flex flex-col gap-4 mt-2">
                 <h4 className="font-heading font-bold text-lg text-primary mb-1">
                   {locale === 'tr' ? 'Benzer Örnekler' : 'Similar Examples'}: {result.trapName}
                 </h4>
                 {demos.filter(d => d.trapName === result.trapName).slice(0, 2).map((demo, idx) => (
-                    <div key={idx} className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
-                        <p className="italic text-text/80 text-sm mb-3">&#34;{demo.input}&#34;</p>
-                        <div className="flex gap-2 items-start text-success/80">
-                            <span className="text-xs mt-0.5">🔄</span>
-                            <p className="text-sm font-medium">{demo.reframe}</p>
-                        </div>
+                  <div key={idx} className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                    <p className="italic text-text/80 text-sm mb-3">&#34;{demo.input}&#34;</p>
+                    <div className="flex gap-2 items-start text-success/80">
+                      <span className="text-xs mt-0.5">🔄</span>
+                      <p className="text-sm font-medium">{demo.reframe}</p>
                     </div>
+                  </div>
                 ))}
                 {demos.filter(d => d.trapName === result.trapName).length === 0 && (
-                    <p className="text-muted text-sm italic">
-                      {locale === 'tr' ? 'Hiç benzer örnek bulunamadı.' : 'No similar examples found.'}
-                    </p>
+                  <p className="text-muted text-sm italic">
+                    {locale === 'tr' ? 'Hiç benzer örnek bulunamadı.' : 'No similar examples found.'}
+                  </p>
                 )}
               </div>
             )}
