@@ -14,7 +14,7 @@ export default function Home() {
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const [onboarded, setOnboarded] = useState<boolean | null>(null);
   const [isClient, setIsClient] = useState(false);
-  
+
   const t = translations[locale];
 
   useEffect(() => {
@@ -38,18 +38,20 @@ export default function Home() {
       <div className="absolute top-[40%] right-[-10%] w-[30%] h-[30%] bg-secondary/10 blur-[100px] rounded-full pointer-events-none" />
 
       {!onboarded && (
-        <Onboarding 
-          onComplete={() => setOnboarded(true)} 
+
+        <Onboarding
+          onComplete={() => setOnboarded(true)}
           labels={{
             onboarding1: t.onboarding1,
             onboarding2: t.onboarding2,
+            getStarted: (t as any).getStarted,
           }}
         />
       )}
 
-      <HistoryDrawer 
-        isOpen={isHistoryOpen} 
-        onClose={() => setIsHistoryOpen(false)} 
+      <HistoryDrawer
+        isOpen={isHistoryOpen}
+        onClose={() => setIsHistoryOpen(false)}
         labels={{
           historyTitle: t.historyTitle,
           clearHistory: t.clearHistory,
@@ -64,7 +66,7 @@ export default function Home() {
           <span className="text-text">Overthinker</span>
           <span className="text-primary font-light">.ai</span>
         </div>
-        
+
         <div className="flex items-center gap-3">
           <button
             onClick={() => setIsHistoryOpen(true)}
@@ -94,13 +96,13 @@ export default function Home() {
       <main className="flex-1 w-full max-w-5xl mx-auto px-6 pt-16 pb-24 flex flex-col items-center relative z-10">
 
         {/* Hero Section */}
-        <motion.div 
+        <motion.div
           className="mb-14 text-center max-w-3xl mx-auto"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
@@ -118,7 +120,7 @@ export default function Home() {
         </motion.div>
 
         {/* Thought Analyzer (Main CTA) */}
-        <motion.div 
+        <motion.div
           className="w-full relative z-20"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -129,13 +131,13 @@ export default function Home() {
 
         {/* Weekly Report (if data exists) */}
         <div className="mt-16 w-full max-w-3xl">
-           <WeeklyReport labels={{
-             weeklyReportTitle: t.weeklyReportTitle,
-             mostCommonTrap: t.mostCommonTrap,
-             totalReframes: t.totalReframes,
-             growthNote: t.growthNote,
-             noHistory: t.noHistory,
-           }} />
+          <WeeklyReport labels={{
+            weeklyReportTitle: t.weeklyReportTitle,
+            mostCommonTrap: t.mostCommonTrap,
+            totalReframes: t.totalReframes,
+            growthNote: t.growthNote,
+            noHistory: t.noHistory,
+          }} />
         </div>
 
         {/* Mobile History Button (Fixed Bottom) */}
@@ -147,7 +149,7 @@ export default function Home() {
         </button>
 
         {/* 3 Step Animated Flow */}
-        <motion.div 
+        <motion.div
           className="w-full mt-32 mb-16"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -163,8 +165,8 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
             <div className="hidden md:block absolute top-12 left-[15%] right-[15%] h-[2px] bg-gradient-to-r from-primary/10 via-primary/30 to-primary/10 z-0" />
-            
-            <motion.div 
+
+            <motion.div
               className="relative z-10 flex flex-col items-center text-center p-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -179,7 +181,7 @@ export default function Home() {
               <p className="text-muted leading-relaxed">{(t as any).howItWorksStep1Desc}</p>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="relative z-10 flex flex-col items-center text-center p-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -194,7 +196,7 @@ export default function Home() {
               <p className="text-muted leading-relaxed">{(t as any).howItWorksStep2Desc}</p>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="relative z-10 flex flex-col items-center text-center p-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -212,7 +214,7 @@ export default function Home() {
         </motion.div>
 
         {/* Example Transformation Card */}
-        <motion.div 
+        <motion.div
           className="w-full max-w-4xl mt-16 mb-24"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -222,7 +224,7 @@ export default function Home() {
           <div className="p-[1px] rounded-[2rem] bg-gradient-to-b from-white/10 to-transparent">
             <div className="bg-surface/80 backdrop-blur-xl rounded-[2rem] p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-center gap-8 justify-between relative overflow-hidden">
               <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[80px] rounded-full pointer-events-none" />
-              
+
               <div className="flex-1 w-full bg-bg/50 border border-red-500/20 rounded-2xl p-6 shadow-inner relative">
                 <span className="absolute -top-3 left-4 bg-bg px-2 text-xs font-semibold text-red-400 uppercase tracking-widest border border-red-500/20 rounded-full">
                   {locale === 'tr' ? 'Önce' : 'Before'}
