@@ -2,7 +2,7 @@
 > **“Think clearer, not harder.”**
 
 ## 🎯 Problem: Ne Çözüyorum?
-İnsanlar günlük hayatta farkında olmadan **Bilişsel Çarpıtmalar (Cognitive Bias)** yaparlar. Bu hatalar, kişinin olayları olduğundan daha negatif görmesine ve bu çarpıtılmış düşünceleri "mutlak gerçek" sanmasına yol açar.
+İnsanlar günlük hayatta farkında olmadan Bilişsel Çarpıtmalar (Cognitive Distortions) yaparlar. Bu zihinsel filtreler, olayları olduğundan daha negatif görmemize ve bu çarpıtılmış düşünceleri "mutlak gerçek" sanmamıza yol açar. Overthinker.ai, bu düşünce döngülerini kırmak için tasarlanmış bir dijital farkındalık aracıdır.
 
 **Yaygın Düşünce Hataları:**
 * **Genelleme:** "Kimse beni sevmiyor" (Tek bir olaydan genel sonuç çıkarma).
@@ -10,9 +10,10 @@
 * **Zihin Okuma:** "O bana selam vermedi, kesin benden nefret ediyor" (Kanıtsız varsayımlarda bulunma).
 
 ## 👤 Kullanıcı: Bu Uygulamayı Kim Kullanacak?
-1.  **Üniversite Öğrencileri (Ana MVP Odağı):** Sınav, sunum ve gelecek kaygısı altında "overthinking" yaşayan, stresli genç kitle.
+1.  **Üniversite Öğrencileri:** Sınav, sunum ve gelecek kaygısı altında "overthinking" yaşayan, stresli genç kitle.
 2.  **Genç Profesyoneller:** Kariyer basamaklarında karar verme güçlüğü çekenler.
 3.  **Öz Farkındalık Arayanlar:** Kendi düşünce yapısını daha rasyonel bir zemine oturtmak isteyen herkes.
+
 
 ## 🤖 AI'ın Rolü: Çözüm Mekanizması
 AI, kullanıcı için bir **"düşünce aynası"** gibi çalışır. Kullanıcı bir düşünce girdiğinde sistem şu adımları izler:
@@ -28,10 +29,11 @@ Uygulamanın en vurucu noktası, negatif bir düşünceyi tek tıkla rasyonel bi
 
 ## 🏁 Rakip Durum ve Farklılaşma
 Overthinker.ai, mevcut rakiplerinden şu noktalarda ayrışır:
-* **Tam Türkçe Yerelleşme:** Terimlerden analize kadar tamamen Türkçe odaklı deneyim.
+* **Çift Dil Desteği:** Hem **Türkçe** hem de **İngilizce** dillerinde tam uyumlu çalışır.
+* **Akıllı Analiz:** AI, her iki dilde de bilişsel çarpıtmaları hassasiyetle analiz eder ve dile uygun rasyonel dönüşümler sunar.
 * **Üniversite Template'leri:** Öğrencilerin spesifik stres noktalarına (sınav, sunum) özel hazır yapılar.
 * **Oyunlaştırma (Gamification):** Günlük kullanım rozetleri ve dönüştürülen düşünce sayıları ile sürdürülebilir alışkanlık.
-* **Sosyal Paylaşım:** Dengeli düşünceleri WhatsApp gibi mecralarda hızlıca paylaşabilme.
+* **Görsel İndirme:** Yeniden çerçevelenen düşünceyi şık bir tasarım kartı olarak cihazınıza indirebilirsiniz
 
 ## 🚀 Başarı Kriteri
 Kullanıcının olumsuz bir düşünceye kapıldığında uygulamayı kullanıp, AI analizi sonrası **"hmm, bu doğru olabilir"** diyerek daha dengeli bir bakış açısı kazanması temel başarı kriterimizdir.
