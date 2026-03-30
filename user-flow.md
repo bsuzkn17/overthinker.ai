@@ -1,12 +1,10 @@
-# Overthinker.ai User Flow
-
 # User Flow — Overthinker.ai 🧠
 
-Bu doküman, kullanıcının uygulama üzerindeki yolculuğunu ve sistemin bu adımlara verdiği yanıtları teknik ve deneyimsel olarak açıklar.
+This document outlines the user's journey through the application, from the initial landing page to the AI-driven cognitive analysis and results sharing.
 
 ---
 
-## 🗺 Kullanıcı Akış Diyagramı
+## 🗺 User Flow Diagram
 
 ```mermaid
 graph TD
@@ -40,6 +38,7 @@ graph TD
     L --> R
     M --> R
     R --> E
+
 ### Steps:
 
 1. **Language Selection**: User sets their preferred language (Turkish/English) via the toggle in the header.
