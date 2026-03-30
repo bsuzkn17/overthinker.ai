@@ -42,7 +42,7 @@ Yapay zeka destekli bilişsel çarpıtma tespit aracı. Düşüncelerindeki tuza
 
 Uygulamayı hemen deneyin: **[overthinker-ai-jmiq.vercel.app](https://overthinker-ai-jmiq.vercel.app/)**
 
-Portfolyo:**[https://claude.ai/public/artifacts/badedb0e-8238-49da-9947-21e18d6e9a9b]
+Portfolyo: https://claude.ai/public/artifacts/badedb0e-8238-49da-9947-21e18d6e9a9b
 
 ### Örnek Kullanım
 
