@@ -1,38 +1,45 @@
 # Overthinker.ai User Flow
 
-This document outlines the step-by-step journey of a user through the Overthinker.ai application.
+# User Flow — Overthinker.ai 🧠
+
+Bu doküman, kullanıcının uygulama üzerindeki yolculuğunu ve sistemin bu adımlara verdiği yanıtları teknik ve deneyimsel olarak açıklar.
+
+---
+
+## 🗺 Kullanıcı Akış Diyagramı
 
 ```mermaid
 graph TD
     A[Start: Landing Page] --> B{Choose Language}
-    B -->|TR| C[Turkish Textarea]
-    B -->|EN| D[English Textarea]
+    B -->|TR| C[Turkish Interface]
+    B -->|EN| D[English Interface]
     
     C --> E[Input Thought / Feeling]
     D --> E
     
     E --> F{Input Validity Check}
-    F -->|< 10 chars| G[Show Error: Min 10 chars]
-    F -->|> 10 chars| H[Click "Analyze"]
+    F -->|"< 10 chars"| G[Show Error: Min 10 chars]
+    F -->|"> 10 chars"| H[Click "Analyze"]
     
-    H --> I[Loading State: Pulse Animation + Disabled Input]
-    I --> J{API Analysis (Groq AI)}
+    H --> I[Loading State: Pulse Animation]
+    I --> J{API Analysis: Groq AI}
     
     J -->|Crisis Signal| K[Emergency Crisis Card]
-    J -->|Non-Thought/Random| L[Guidance Message Card]
+    J -->|Non-Thought / Random| L[Guidance Message Card]
     J -->|Valid Thought| M[Result Card: Cognitive Analysis]
     
     M --> N[Detected Distortion]
     M --> O[AI Insight / Explanation]
     M --> P[Balanced Reframe]
-    M --> Q[3 Specialized Practical Suggestions]
+    
+    M --> Q[Social Sharing Options]
+    Q --> Q1[Download Result Image]
+    Q --> Q2[Copy Analysis Text]
     
     K --> R[Reset / New Thought]
     L --> R
     M --> R
     R --> E
-```
-
 ### Steps:
 
 1. **Language Selection**: User sets their preferred language (Turkish/English) via the toggle in the header.
