@@ -8,6 +8,7 @@ interface OnboardingProps {
   labels: {
     onboarding1: string;
     onboarding2: string;
+    getStarted: string; // Yeni etiket eklendi
   };
 }
 
@@ -54,12 +55,13 @@ export default function Onboarding({ onComplete, labels }: OnboardingProps) {
                 {labels.onboarding2}
               </p>
             </div>
-            
+
             <button
               onClick={handleFinish}
               className="group relative inline-flex items-center gap-3 px-10 py-5 rounded-2xl bg-primary text-white font-bold text-lg shadow-2xl shadow-primary/40 hover:scale-105 transition-all active:scale-95"
             >
-              Get Started
+              {/* Burası artık i18n dosyasından gelen metni gösterecek */}
+              {labels.getStarted}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
