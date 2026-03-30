@@ -2,6 +2,8 @@ export type Locale = "tr" | "en";
 
 export const translations = {
   tr: {
+
+
     subtitle: "Daha net düşün, daha az kafanı yor.",
     description:
       "Düşünce tuzaklarını fark et, önyargılı düşüncelerini sorgula ve zihnini AI ile daha net gör.",
@@ -50,6 +52,7 @@ export const translations = {
     onboarding1: "Merhaba. Burası senin güvenli alanın.",
     onboarding2: "Zihnini kurcalayan bir düşünceyi buraya yaz.",
     onboarding3: "İpucu: Ne kadar spesifik olursan, o kadar derin analiz alırsın.",
+    getStarted: "Hadi Başlayalım",
     loadingMessages: [
       "Satır aralarını okuyorum…",
       "Örüntüler aranıyor…",
@@ -81,6 +84,7 @@ export const translations = {
     exampleAfterCard: "Bu deneyim istediğim gibi gitmedi ama bu benim genel başarımı tanımlamaz."
   },
   en: {
+
     subtitle: "Think clearer, not harder.",
     description:
       "Spot thinking traps, challenge biased thoughts, and see your mind more clearly with AI.",
@@ -129,6 +133,7 @@ export const translations = {
     onboarding1: "Hi. This is a safe space.",
     onboarding2: "Write down a thought that's on your mind.",
     onboarding3: "Tip: The more specific you are, the better the insight.",
+    getStarted: "Get Started",
     loadingMessages: [
       "Reading between the lines…",
       "Looking for patterns…",
