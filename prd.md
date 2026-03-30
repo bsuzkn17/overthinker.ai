@@ -76,7 +76,7 @@ Coaches, therapists, educators who want a lightweight digital tool to introduce 
 |-------|-----------|--------|
 | **Frontend** | Next.js + Tailwind CSS | Fast, SEO-friendly, easy to deploy on Vercel |
 | **Fonts** | Inter / Poppins (Google Fonts) | Modern, clean — matches the design brief |
-| **AI Layer** | OpenAI API (GPT-4o-mini) | Sufficient for cognitive pattern recognition at low cost |
+| **AI Layer** | **Groq API (Llama 3 / Mixtral)** | Sufficient for cognitive pattern recognition at low cost |
 | **Backend** | Next.js API Routes | No separate server needed for MVP |
 | **Database** | None (MVP) / Supabase (v2) | MVP is stateless; v2 adds user history |
 | **Hosting** | Vercel | Free tier, instant deploys, edge functions |
