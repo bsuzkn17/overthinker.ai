@@ -18,10 +18,13 @@ Bu dosya,`prd.md` içerisindeki gereksinimlere dayanılarak oluşturulmuştur ve
 - [x] **Sonuç Kartı Bileşeni:** API verisini gösterecek kart şablonunu oluştur (Mor trap etiketi, Insight ve Reframe blokları).
 - [x] **Statik Demo Bölümü:** 3 örnek vakayı barındıran "Try an example" butonunu ve statik sonuç kartlarını kodla.
 
-## 🧠 Aşama 4: AI Entegrasyonu (Backend & Logic)
-- [ ] **API Route:** `/api/analyze` uç noktasını (endpoint) oluştur.
-- [ ] **OpenAI İletişimi:** `openai` paketini yükle, API anahtarını bağla ve System Prompt'u zorunlu JSON objesi (`trap_name`, `insight`, `reframe`) dönecek şekilde ayarla.
-- [ ] **Zaman Tüneli İletişimi:** TextArea üzerinden girilen metin için API isteği (fetch) atılmasını ve bekleme anında Loading animasyonu çıkmasını sağla.
+## Aşama 4: AI Entegrasyonu (Backend & Logic) ⚙️
+- [ ] **API Route Yapılandırması:** `src/app/api/analyze/route.ts` (veya ilgili dizin) altında `/api/analyze` uç noktasını (endpoint) oluştur.
+- [ ] **Groq SDK Entegrasyonu:** `groq-sdk` paketini yükle ve `GROQ_API_KEY` değişkenini `.env.local` üzerinden güvenli bir şekilde bağla.
+- [ ] **Sistem Komutu (System Prompt):** AI modelini, kullanıcı girdisini analiz edip **zorunlu JSON** formatında (`trap_name`, `insight`, `reframe`) yanıt dönecek şekilde yapılandır.
+- [ ] **Frontend Bağlantısı:** `TextArea` üzerinden girilen metnin API'ye `fetch` ile gönderilmesini sağla.
+- [ ] **Loading State:** İstek süresince kullanıcıya modern bir "Loading" animasyonu veya durumu (skeleton/spinner) gösterilmesini sağla.
+- [ ] **Hata Yönetimi:** API'den boş dönen veya hatalı gelen yanıtlar için "try-catch" blokları ile kullanıcıya geri bildirim ver.
 
 ## 🛠️ Aşama 5: Cila ve Kullanıcı Deneyimi
 - [ ] Formu temizleyen ve yeni giriş için sıfırlayan butonu ekle.
