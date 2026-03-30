@@ -1,6 +1,6 @@
 # Overthinker.ai - Geliştirme Görev Listesi (MVP)
 
-Bu dosya, güncellenmiş `prd.md` içerisindeki gereksinimlere (Pitch Deck ve Gelecek Roadmap hariç) dayanılarak oluşturulmuştur ve projenin canlıya alınmasına kadar olan süreci adım adım kapsar.
+Bu dosya,`prd.md` içerisindeki gereksinimlere dayanılarak oluşturulmuştur ve projenin canlıya alınmasına kadar olan süreci adım adım kapsar.
 
 ## 📦 Aşama 1: Proje Kurulumu ve Yapılandırma
 - [x] Next.js 14+ (App Router) projesi oluştur.
