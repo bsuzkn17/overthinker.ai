@@ -17,7 +17,7 @@ Yapay zeka destekli bilişsel çarpıtma tespit aracı. Düşüncelerindeki tuza
 
 ## 🧠 Nedir?
 
-**Overthinker.ai**, kullanıcıların kendi düşüncelerindeki **bilişsel çarpıtmaları** (cognitive distortions) fark etmelerine yardımcı olan Türkçe bir web uygulamasıdır. BDT (Bilişsel Davranışçı Terapi) çerçevesine dayanan bu araç, yapay zeka ile düşünce kalıplarını analiz eder ve yargılamadan, baskı olmadan netlik sunar.
+İnsanlar günlük hayatta farkında olmadan Bilişsel Çarpıtmalar (Cognitive Distortions) yaparlar. Bu zihinsel filtreler, olayları olduğundan daha negatif görmemize ve bu çarpıtılmış düşünceleri "mutlak gerçek" sanmamıza yol açar.**Overthinker.ai**, kullanıcıların kendi düşüncelerindeki **bilişsel çarpıtmaları** fark etmelerine yardımcı olan çift dil destekli (Türkçe/İngilizce) bir web uygulamasıdır. BDT (Bilişsel Davranışçı Terapi) çerçevesine dayanan bu araç, yapay zeka ile düşünce kalıplarını analiz eder ve yargılamadan, baskı olmadan netlik sunar.
 
 > Kullanıcı bir düşünce yazar → Yapay zeka düşünce tuzağını tespit eder → Nazikçe açıklar → Dengeli bir yeniden çerçeveleme sunar.
 
