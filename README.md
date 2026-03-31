@@ -40,9 +40,13 @@ Yapay zeka destekli bilişsel çarpıtma tespit aracı. Düşüncelerindeki tuza
 
 ## 🚀 Demo
 
-Uygulamayı hemen deneyin: **[overthinker-ai-jmiq.vercel.app](https://overthinker-ai-jmiq.vercel.app/)**
+Yayın linki: **[overthinker-ai-jmiq.vercel.app](https://overthinker-ai-jmiq.vercel.app/)**
+
+Demo video: https://www.loom.com/share/126623399e1b40039a584e28658cf6b4
 
 Portfolyo: https://claude.ai/public/artifacts/badedb0e-8238-49da-9947-21e18d6e9a9b
+
+
 
 ### Örnek Kullanım
 
